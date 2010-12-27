@@ -15,8 +15,6 @@ Para generar una version HTML de la documentación, deberás tener instaladas la
 
 Una vez que tengas todo instalado, ve al directorio docs/tutorial/es y ejecuta el comando:
 
-.. code-block:: php
-
     make html
 
 La documentación estara disponible en el directorio _build.
