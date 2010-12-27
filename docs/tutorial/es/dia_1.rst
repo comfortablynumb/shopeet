@@ -9,18 +9,18 @@ En esta oportunidad, se realizó una votación para elegir que tipo de aplicaci�
 
 Esta vez decidimos realizar una aplicación algo mas compleja por dos motivos. En primer lugar, el aprendizaje de un framework de la gama de Symfony 2 es mucho mas sencillo para el desarrollador si se logran tocar todos los componentes de una manera amena y clara. Pero también creemos que es importante lograr mostrar todas las posibilidades de cada componente, lo cual es muy dificil de lograr en un sitio sencillo, simplemente porque no es necesario. Además, una aplicación mas completa nos permite tocar también temas de última generación en la web, como lo son `HTML 5`_, `CSS3`_ o las denominadas "Rich Internet Applications" (`RIA`_). 
 
-En segundo lugar, una aplicación compleja permite servir como base para desarrollar una gama mas amplia de aplicaciones de lo que se podría lograr con un sitio mas simple. La idea principal es lograr que puedas aprender todos los puntos vitales de Symfony 2. Sin embargo, también creimos que sería bueno que esta aplicación te sirviera, además, como base para crear tus propias aplicaciones web, o que al menos de ella obtengas varios "Bundles" que puedan servir para tus desarrollos.
+En segundo lugar, una aplicación compleja permite servir como base para desarrollar una gama mas amplia de aplicaciones de lo que se podría lograr con un sitio mas simple. La idea principal es lograr que puedas aprender todos los puntos vitales de Symfony 2. Sin embargo, creimos que sería bueno que esta aplicación también te sirviera como base para crear tus propias aplicaciones web, o que al menos de ella obtengas varios "Bundles" que puedan servir para tus desarrollos.
 
 La esencia de este tutorial es la misma que la que tuvo "Jobeet" en su momento. Es decir, cada día esta planeado para que se lea y se desarrolle en una o dos horas. Cada día se van a tocar uno o dos temas principales, hasta llegar al último día, donde se verá la aplicación terminada.
 
-Esperamos que disfrutes de leer este tutorial tanto como nosotros lo hemos hecho al escribirlo. Estás listo para empezar? comencemos!
+Esperamos que disfrutes de leer este tutorial tanto como nosotros lo hemos hecho al escribirlo. Estás listo para empezar? Comencemos!
 
 Requisitos previos
 ------------------
 
 Antes de comenzar, necesitas verificar que tienes el entorno adecuado de desarrollo. Por esta razón vamos a dedicar este día a la configuración de tu entorno y a la resolución de los problemas típicos que pueden surgir en el camino.
 
-Lo primero que tienes que verificar es que tengas instalado un servidor web (como Apache o IIS) con PHP en su versión, como mínimo, 5.3.2, aunque la recomendada es la 5.3.3. También necesitarás una base de datos compatible con PDO, como podrían ser MySQL o PostgreSQL. En nuestro caso utilizaremos MySQL. Por último, será necesario que poseas instalado el software de control de versiones git. Si aún no posees alguno de estos componentes instalados en tu sistema, o no sabes bién de que manera hacerlo, no te preocupes! la sección que sigue se encarga justamente de explicarte, con todo detalle, como crear tu propio entorno de desarrollo.
+Lo primero que tienes que verificar es que tengas instalado un servidor web (como Apache o IIS) con PHP en su versión, como mínimo, 5.3.2, aunque se recomienda tener la versión 5.3.3. También necesitarás una base de datos compatible con PDO, como podrían ser MySQL o PostgreSQL. En nuestro caso utilizaremos MySQL, pero puedes utilizar la base de datos que prefieras. Por último, será necesario que poseas instalado el software de control de versiones git. Si aún no posees alguno de estos componentes instalados en tu sistema, o no sabes bién de que manera hacerlo, no te preocupes! la sección que sigue se encarga justamente de explicarte, con todo detalle, como crear tu propio entorno de desarrollo.
 
 Instalación
 -----------

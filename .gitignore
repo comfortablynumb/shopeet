@@ -1,4 +1,1 @@
-docs/tutorial/*/conf.py
-docs/tutorial/*/Makefile
-docs/tutorial/*/make.bat
-docs/tutorial/*/_*
+docs/tutorial/*/_build
