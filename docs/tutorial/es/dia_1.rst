@@ -162,7 +162,12 @@ Selecciona Apache 2. Luego te preguntará si deseas configurar la base de datos 
 
 Seleccionas que si. Luego te preguntará por la contraseña del usuario de administración de tu base de datos. Colocas la contraseña de tu usuario root. Finalmente te preguntará por otra contraseña de aplicación para phpMyAdmin. Puedes colocar tu propia contraseña o dejar el campo en blanco para que phpMyAdmin lo genere automáticamente.
 
-Felicitaciones, ya tienes tu paquete LAMP instalado!
+Vamos a probar si phpMyAdmin esta funcionando. Accede desde tu navegador a la direccion ``http://<Direccion IP del Servidor>/phpmyadmin``. Por ejemplo: http://192.168.0.1/>/phpmyadmin o http://localhost/>/phpmyadmin si el servidor web se encuentra en la máquina local. Deberías ver algo similar a lo que muestra la siguiente imagen:
+
+.. image:: images/dia_1/instalacion_linux_ubuntu_phpmyadmin_3.png
+    :align: center
+
+Simplemente ingresa la contraseña que configuraste para phpMyAdmin y ya estarás listo para utilizarlo. Felicitaciones, ya tienes tu paquete LAMP instalado!
 
 Ahora necesitamos instalar `Git`_, el sistema de control de versiones que utilizaremos con nuestra aplicación. Para instalarlo solo tienes que ejecutar el siguiente comando en tu terminal:
 
@@ -272,6 +277,16 @@ Mientras que al php.ini de Apache vamos a asignarle 64M:
 
 Listo! completamos la configuración de PHP. No fue dificil, no?
 
+Comienzo del proyecto
+---------------------
+
+Para comenzar nuestro proyecto, vamos a descargar el sandbox de Symfony 2, el cual ya nos provee de una estructura base de directorios y archivos para poder comenzar a desarrollar nuestra aplicación. Para ello, primero tenemos que ir a la carpeta publica de nuestro servidor web. En nuestro caso es `www`:
+
+.. code-block:: php
+
+    cd /var/www
+
+El siguiente paso es clonar el repositorio del sandbox de symfony 2, lo cual vendría a ser como un `checkout` para los que utilizan SVN:
 
 Completar.
 
