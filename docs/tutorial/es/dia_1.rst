@@ -201,7 +201,44 @@ Windows
 
 Existen diversos paquetes para Windows que incluyen un servidor web (Apache 2 en este caso), PHP, MySQL y otras herramientas muy útiles para el desarrollo. Uno de estos fantásticos paquetes es `WAMP`_.
 
-Completar.
+.. image:: images/dia_1/instalacion_windows_wamp_1.png
+    :align: center
+
+Baja el último paquete estable e instalalo. La instalación es muy sencilla y con las opciones por defecto suele bastar. Al finalizar la instalación de WAMP, ya tendrás instalado Apache, PHP, MySQL y herramientas como phpMyAdmin. Antes de proseguir, sin embargo, debemos hacer un pequeño cambio en el archivo ``php.ini``. La instalación de WAMP, por defecto, trae la extensión intl desactivada. Symfony 2 actualmente requiere de esta extensión para los validators. Para activarla, lo unico que debemos hacer es buscar esta linea:
+
+.. code-block:: php
+
+    ;extension=php_intl.dll
+
+Y borrarle el punto y coma (que transforma la linea en comentario). Luego reiniciar Apache y listo, ya tendremos la extensión activada.
+
+Otra extensión que es muy recomendable instalar es APC. Para instalarla en Windows, deberas bajarla de `este sitio`_. En mi caso, teniendo Windows 7 de 32 bits y el paquete WAMP instalado, la extensión que bajé es:
+
+.. code-block:: php
+
+    php_apc-3.1.5-5.3-vc6-x86.zip
+
+Dentro del zip solo viene una DLL. En el caso de WAMP, solo basta con colocarla en el directorio bin/php/php5.3.x/ext. Luego editas el archivo ``php.ini``. Vas a la parte de extensiones y agregas la siguiente linea:
+
+.. code-block:: php
+
+    extension=php_apc.dll
+
+Con reiniciar el servidor web ya deberías tener la extensión habilitada. Puedes comprobarlo, como siempre, ejecutando la funcion ``phpinfo()``.
+
+Otro paso que es recomendable hacer es setear en el PATH la ruta hacia el ejecutable de PHP, para poder utilizarlo desde la consola. Para realizar este paso, deberás ingresar al Panel de Control, luego elegir "Sistema". En Windows XP debes ir a la solapa "Avanzadas", mientras que en Windows 7 debes seleccionar primero "Opciones avanzadas de sistema". Una vez en esta sección, debes hacer click en "Variables de Entorno". Busca en la parte de abajo la variable PATH, y agrega el path al ejecutable de PHP. En mi caso es C:\\Wamp\\bin\\php\\php5.3.5\\. No olvides de cerrar y volver a abrir cualquier consola que tengas abierta para que tenga efecto el cambio.
+
+El paso siguiente será instalar git. Para Windows, la implementación mas conocida es `msysgit`_:
+
+.. image:: images/dia_1/instalacion_windows_msysgit_1.png
+    :align: center
+
+Las descargas están en la columna derecha. Una vez descargado el instalador, te aparecerán varias opciones para elegir, pero generalmente es conveniente dejar las opciones por defecto. Una vez instalado, si elegiste tener bash como consola, al iniciar git te aparecerá lo siguiente:
+
+.. image:: images/dia_1/instalacion_windows_msysgit_2.png
+    :align: center
+
+Con esto finalizamos la instalación para Windows.
 
 Configuración de PHP
 --------------------
@@ -299,3 +336,5 @@ Completar.
 .. _RIA: http://es.wikipedia.org/wiki/Rich_Internet_Applications
 .. _Jobeet: http://www.symfony-project.org/jobeet/1_4/Doctrine/en/
 .. _WAMP: http://www.wampserver.com/
+.. _este sitio: http://downloads.php.net/pierre/
+.. _msysgit: http://code.google.com/p/msysgit/
