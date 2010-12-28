@@ -93,63 +93,7 @@ Finalmente accede desde tu navegador a la direccion ``http://<Direccion IP del S
 
 Con esto ya tienes tu servidor web configurado, funcionando con PHP. No olvides eliminar el archivo /var/www/phpinfo.php para no exponer información vital de tu configuración a otras personas.
 
-Lo que haremos a continuación es configurar PHP. En Ubuntu/Debian, PHP viene con dos archivos php.ini. Uno que utiliza cuando ejecutas scripts desde la consola (CLI), y otro para cuando ejecutas scripts desde el navegador. Nosotros tendremos que configurar los dos. Generalmente las modificaciones que se necesitan en ambos son muy similares. Los archivos se encuentran en las siguientes rutas:
-
-.. code-block:: php
-
-    sudo nano /etc/php5/cli/php.ini
-
-Y:
-
-.. code-block:: php
-
-    sudo nano /etc/php5/apache2/php.ini
-
-Si has instalado PHP con nosotros, solo tendrás que modificar una linea:
-
-.. code-block:: php
-
-    short_open_tag = On
-
-Cambia On por Off. Luego, asegurate de que las siguientes opciones estan configuradas de la siguiente forma en ambos archivos php.ini:
-
-.. code-block:: php
-
-    display_errors = Off
-
-.. code-block:: php
-
-    log_errors = On
-
-.. code-block:: php
-
-    error_log = path/al/archivo_de_log_de_errores_php
-
-.. code-block:: php
-
-    register_globals = Off
-
-.. code-block:: php
-
-    magic_quotes_gpc = Off
-
-.. code-block:: php
-
-    session.auto_start = 0
-
-El limite de memoria para los scripts ejecutados desde el CLI debería ser mas alto que para los scripts ejecutados desde el navegador, básicamente porque en general ejecutan tareas mas pesadas, tales como backups del sistema, limpieza, tests, etc. Por esta razon vamos a asignarle 512M a la opcion memory_limit del CLI:
-
-.. code-block:: php
-
-    memory_limit = 512M
-
-Mientras que al php.ini de Apache vamos a asignarle 128M:
-
-.. code-block:: php
-
-    memory_limit = 128M
-
-Listo! completamos la instalación y configuración de PHP. Ahora el siguiente paso será instalar MySQL. Para ello, accede nuevamente a la consola y ejecuta este comando:
+Ahora el siguiente paso será instalar MySQL. Para ello, accede nuevamente a la consola y ejecuta este comando:
 
 .. code-block:: php
 
@@ -254,9 +198,84 @@ Existen diversos paquetes para Windows que incluyen un servidor web (Apache 2 en
 
 Completar.
 
+Configuración de PHP
+--------------------
+
+Teniendo todo instalado, lo que necesitamos hacer ahora es configurar PHP. El archivo a configurar se llama `php.ini`. Hay que tener en cuenta que en algunos casos se tiene un único `php.ini`, mientras que en otros casos hay dos: Uno que se utiliza cuando ejecutas scripts desde la consola (CLI), y otro cuando ejecutas scripts desde el navegador. Una manera de saber cual se está utilizando es ejecutar phpinfo(). En la siguiente imagen te mostramos donde se informa la ubicación del php.ini utilizado por PHP: 
+
+.. image:: images/dia_1/configuracion_php_1.png
+    :align: center
+
+Nosotros vamos a utilizar Ubuntu como ejemplo para configurar PHP. Las modificaciones que realizaremos son válidas para cualquier sistema operativo. Recuerda asegurarte que el `php.ini` que estás modificando es el que efectivamente usa PHP para ejecutar tus scripts.
+
+Habiendo encontrado los archivos de configuración, vamos a proceder a editarlos. En nuestro caso, los archivos se encuentran en las siguientes rutas:
+
+.. code-block:: php
+
+    sudo nano /etc/php5/cli/php.ini
+
+Y:
+
+.. code-block:: php
+
+    sudo nano /etc/php5/apache2/php.ini
+
+En primer lugar, deberás asignar un timezone correspondiente a tu zona. En mi caso, es el siguiente:
+
+.. code-block:: php
+
+    date.timezone = America/Argentina/Buenos_Aires
+
+Aquí tienes `la lista de timezones soportadas por PHP`_.
+
+Luego, asegurate de que las siguientes opciones estén configuradas de la siguiente forma en el/los archivo/s `php.ini`:
+
+.. code-block:: php
+
+    short_open_tag = Off
+
+.. code-block:: php
+
+    display_errors = Off
+
+.. code-block:: php
+
+    log_errors = On
+
+.. code-block:: php
+
+    error_log = path/al/archivo_de_log_de_errores_php
+
+.. code-block:: php
+
+    register_globals = Off
+
+.. code-block:: php
+
+    magic_quotes_gpc = Off
+
+.. code-block:: php
+
+    session.auto_start = 0
+
+El limite de memoria para los scripts ejecutados desde el CLI debería ser mas alto que para los scripts ejecutados desde el navegador, básicamente porque suelen ejecutar tareas mas pesadas, tales como backups del sistema, limpieza, tests, etc. Por esta razon vamos a asignarle 512M a la opción `memory_limit` del CLI:
+
+.. code-block:: php
+
+    memory_limit = 512M
+
+Mientras que al php.ini de Apache vamos a asignarle 64M:
+
+.. code-block:: php
+
+    memory_limit = 64M
+
+Listo! completamos la configuración de PHP. No fue dificil, no?
 
 
+Completar.
 
+.. _la lista de timezones soportadas por PHP: http://php.net/manual/en/timezones.php
 .. _HTML 5: http://es.wikipedia.org/wiki/HTML_5
 .. _CSS3: http://www.css3.info/
 .. _Pro Git: http://progit.org/
