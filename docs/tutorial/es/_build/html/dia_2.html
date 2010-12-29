@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Dia 2 - El Proyecto &mdash; Shopeet v1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Shopeet v1.0 documentation" href="index.html" />
+    <link rel="prev" title="Dia 1 - Introducción" href="dia_1.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="dia_1.html" title="Dia 1 - Introducción"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Shopeet v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="dia-2-el-proyecto">
+<span id="dia-2"></span><h1>Dia 2 - El Proyecto<a class="headerlink" href="#dia-2-el-proyecto" title="Permalink to this headline">¶</a></h1>
+<p>Cuando se desarrolla una aplicación, es muy importante dedicar tiempo al análisis y al diseño antes de empezar a escribir código. Siempre es mas facil borrar y volver a escribir un documento de requerimientos o un diagrama UML que cambiar, por ejemplo, el modelo de datos del modulo de Productos, y todos los modelos afectados por el cambio. Por esta razon vamos a dedicar este día a recorrer el análisis y parte del diseño de nuestra aplicación web.</p>
+<div class="section" id="requerimientos-iniciales">
+<h2>Requerimientos iniciales<a class="headerlink" href="#requerimientos-iniciales" title="Permalink to this headline">¶</a></h2>
+<p>Las características generales que nuestro Sistema de E-Commerce debe cumplir son las siguientes:</p>
+<ul class="simple">
+<li>La aplicación deberá estar conformada por bundles reutilizables, incluyendo un bundle de Productos, un bundle genérico de gateways de pago que pueda ser extendido, un bundle de un Shopping Cart, etc.</li>
+<li>El Backend deberá realizarse con el estilo de las aplicaciones <a class="reference external" href="http://es.wikipedia.org/wiki/Rich_Internet_Applications">RIA</a>, con manejo de ventanas, Grids y otros componentes avanzados, que le permitan al usuario realizar la carga de datos de forma rápida y eficiente. La interacción con el servidor deberá realizarse única y exclusivamente para la consulta y modificación de datos, enviando pedidos via JSON, sin recargar en ningún momento el layout del Backend.</li>
+<li>Permitirá la instalación y habilitación de diferentes templates para el Frontend.</li>
+<li>Será multilenguaje.</li>
+<li>Permitirá el uso de cualquier moneda y manejar los cambios de cotización.</li>
+<li>Deberá utilizar Listas de Control de Acceso (ACL) para moderar el uso del sistema a sus usuarios.</li>
+<li>El sistema deberá poseer acceso via Web Services a usuarios con privilegios de acceso al API, para realizar todo tipo de consultas y modificaciones, dependiendo de los permisos que tengan.</li>
+<li>Deberá poseer una arquitectura tal que permita el desarrollo e instalación de un nuevo gateway de pago de forma fácil y sin afectar al funcionamiento del Sistema, si ya fué implementado en Producción.</li>
+<li>Deberá poder actualizarse de una forma sencilla, y sin tener perdida de datos.</li>
+<li>Deberá poseer un sistema de Backup y Restore.</li>
+<li>El registro de usuarios deberá ser sencillo y rápido de completar.</li>
+<li>Deberá existir un método de retribución de contraseña.</li>
+</ul>
+<p>Dentro de los requerimientos específicos en cada entidad, podríamos enumerar los siguientes:</p>
+<div class="section" id="productos">
+<h3>Productos<a class="headerlink" href="#productos" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Deberá existir la posibilidad de agregar atributos personalizados a un Producto, que puedan utilizarse también para la busqueda.</li>
+<li>Cada Producto podrá ser asignado a una o mas Categorías.</li>
+<li>Podrán crearse &#8220;Versiones&#8221; de Productos. Por ejemplo, un Producto A puede tener 3 versiones: en color blanco, negro y rojo.</li>
+<li>Podrán relacionarse Productos para poder mostrar una lista de Productos similares que puedan interesarle al comprador.</li>
+<li>Podrá configurarse si el Producto tendrá administración de stock o no.</li>
+<li>Se le podrán añadir Imagenes, Videos, Documentos y otro tipo de adjuntos.</li>
+<li>Podrán configurarse el costo, el precio y precios especiales por cliente o por rangos de fecha.</li>
+</ul>
+</div>
+<div class="section" id="categorias-de-productos">
+<h3>Categorías de Productos<a class="headerlink" href="#categorias-de-productos" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>El arbol de categorías podrá llegar a cualquier nivel de profundidad.</li>
+<li>El arbol deberá implementarse con un diseño eficaz que tenga buen rendimiento de lectura (Nested Set o Closure Table, siendo preferible el último).</li>
+<li>Las categorías también podrán tener adjuntos.</li>
+</ul>
+</div>
+<div class="section" id="adjuntos">
+<h3>Adjuntos<a class="headerlink" href="#adjuntos" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Podrán ser imágenes, videos, documentos u otro tipo de adjuntos. Ciertos tipos de adjuntos deberán mostrarse de manera especial (las imágenes, por ejemplo, se mostrarán en una galería. Los videos en una galería diferente. Etc.).</li>
+</ul>
+<p>[COMPLETAR]</p>
+</div>
+</div>
+<div class="section" id="diagrama-uml-de-entidades">
+<h2>Diagrama UML de Entidades<a class="headerlink" href="#diagrama-uml-de-entidades" title="Permalink to this headline">¶</a></h2>
+<p>A continuación te presentamos un diagrama UML que muestra la relación entre las entidades mas importantes de nuestro Sistema:</p>
+<div align="center" class="align-center"><img alt="_images/requerimientos_diagrama_uml.png" class="align-center" src="_images/requerimientos_diagrama_uml.png" /></div>
+<p>[COMPLETAR]</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">Dia 2 - El Proyecto</a><ul>
+<li><a class="reference external" href="#requerimientos-iniciales">Requerimientos iniciales</a><ul>
+<li><a class="reference external" href="#productos">Productos</a></li>
+<li><a class="reference external" href="#categorias-de-productos">Categorías de Productos</a></li>
+<li><a class="reference external" href="#adjuntos">Adjuntos</a></li>
+</ul>
+</li>
+<li><a class="reference external" href="#diagrama-uml-de-entidades">Diagrama UML de Entidades</a></li>
+</ul>
+</li>
+</ul>
+
+            <h4>Previous topic</h4>
+            <p class="topless"><a href="dia_1.html"
+                                  title="previous chapter">Dia 1 - Introducción</a></p>
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/dia_2.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="dia_1.html" title="Dia 1 - Introducción"
+             >previous</a> |</li>
+        <li><a href="index.html">Shopeet v1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2010, Gustavo Falco.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.6.
+    </div>
+  </body>
+</html>
