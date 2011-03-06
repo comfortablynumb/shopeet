@@ -194,7 +194,38 @@ Con esto finaliza la instalación y configuración de tu entorno de desarrollo e
 Macintosh
 #########
 
-Completar.
+Si eres usuario de Mac probablemente tengas ya un entorno de desarrollo con Apache 2.1 y PHP 5.2 pero como es conocido symfony2 esta hecho para PHP 5.3 y para no tener complicaciones vamos a instalar MAMP_
+
+.. image:: images/dia_1/instalacion_mac_mamp_info_url.png
+		:align: center
+.. image:: images/dia_1/instalacion_mac_mamp_info_web.png
+		:align: center
+		
+allí pulsamos el botón "Download Now" una ves terminada las descarga el sistema montará automáticamente la imagen DMG descargada y copiamos la carpeta MAMP a nuestra carpeta de aplicaciones
+.. image:: images/dia_1/instalacion_mac_app_folder.png
+		:align: center
+		
+abrimos la carpeta MAMP y ejecutamos la aplicación MAMP
+.. image:: images/dia_1/instalacion_mac_app_mamp.png
+		:align: center                      
+		 
+Es posible que te solicite tu contraseña
+.. image:: images/dia_1/instalacion_mac_auth_dialog.png
+  	:align: center
+
+una vez la aplicación abierta
+.. image:: images/dia_1/instalacion_mac_mamp_preview.png
+  	:align: center
+
+y automáticamente lanzara la web de inicio mostrando que la instalación fue exitosa 
+.. image:: images/dia_1/instalacion_mac_local_mamp_web.png
+  	:align: center
+
+ahora solo debemos configurar la versión de PHP, para ello pulsamos el botón preferencias y alli seleccionamos la versión de PHP que nos interesa 5.3.2
+.. image:: images/dia_1/instalacion_mac_php_version_window.png
+  	:align: center                             
+
+pulsamos ok, reiniciamos los servidores y listo ya tenemos nuestro entorno para desarrollador con Symfony2.
 
 Windows
 #######
