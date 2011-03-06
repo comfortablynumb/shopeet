@@ -61,11 +61,11 @@ Si todo salió bien, al ingresar desde un navegador a la direccion ``http://<Dir
 .. image:: images/dia_1/instalacion_linux_ubuntu_apache_1.png
     :align: center
 
-El paso siguiente será instalar PHP, para lo cual vamos a necesitar del siguiente comando:
+El paso siguiente será instalar PHP y algunas librerías extras que necesitaremos mas adelante. Para esto ejecutamos el siguiente comando:
 
 .. code-block:: php
 
-    sudo apt-get install php5 libapache2-mod-php5
+    sudo apt-get install php5 libapache2-mod-php5 php5-dev
 
 Reiniciamos Apache para que tome los cambios:
 
@@ -182,6 +182,58 @@ Ya estamos cerca de terminar! El siguiente paso es instalar la extensión intl p
 .. code-block:: php
 
     sudo apt-get install php5-intl
+
+Lo que vamos a hacer ahora es instalar `MongoDB`_ y su soporte para PHP. Este paso es necesario ya que algunas entidades de nuestro modelo serán persistidas en MongoDB. El primer paso será ejecutar los siguientes comandos:
+
+.. code-block:: php
+
+	sudo apt-get install mongodb
+
+.. code-block:: php
+
+	sudo pecl install mongo
+
+Lo único que resta entonces es activar la extensión desde tu archivo php.ini. Agrega la siguiente linea:
+
+.. code-block:: php
+
+	extension=mongo.so
+
+Si todo salió bien, al reiniciar Apache ya debería estar funcionando la extensión de MongoDB para PHP.
+
+Uno de los últimos pasos será instalar XDebug, que no solo nos ayudará a la hora de realizar el debug de nuestras aplicaciones, sino que también será realmente útil al momento de realizar un code coverage de nuestros unit tests.
+
+Para instalar esta extensión, ejecuta el siguiente comando:
+
+.. code-block:: php
+
+	sudo pecl install xdebug
+
+Una vez instalada la extension, deberás agregar la siguiente linea a tu fichero php.ini:
+
+.. code-block:: php
+
+	zend_extension=xdebug.so
+
+En algunas ocasiones PHP lanza un error indicando que el archivo xdebug.so no fue encontrado. Si tienes este problema, ejecuta el siguiente comando:
+
+.. code-block:: php
+
+	find / -name xdebug.so
+
+Si en los resultados aparece una linea como la siguiente:
+
+.. code-block:: php
+
+	/usr/lib/php5/20090626/xdebug.so
+
+Entonces en tu archivo php.ini deberás agregar:
+
+.. code-block:: php
+
+	zend_extension=/usr/lib/php5/20090626/xdebug.so
+
+Al reiniciar Apache, ya deberías tener la extensión activa. Recuerda que puedes verificar las extensiones instaladas simplemente viendo el resultado de la funcion phpinfo().
 
 Con esto ya tienes tu entorno de desarrollo configurado correctamente para correr aplicaciones que utilicen Symfony 2. Un paso opcional, aunque altamente recomendable, es la instalacion de un acelerador de PHP llamado `APC`_, el cual mejora la performance de ejecución de scripts de PHP sustancialmente. Para instalarlo, ejecuta en tu terminal el comando que mostramos a continuación:
 
@@ -377,3 +429,4 @@ Completar.
 .. _este sitio: http://downloads.php.net/pierre/
 .. _msysgit: http://code.google.com/p/msysgit/
 .. _MAMP: http://www.mamp.info/en/index.html
+.. _MongoDB: http://www.mongodb.org/
