@@ -331,4 +331,56 @@ El patrón MVC separa responsabilidades en 3 capas. El Controlador recibe la pet
 Object Relational Mapping (ORM)
 -------------------------------
 
-**[Completar]**
+A la hora de trabajar en nuestra aplicación, manejamos objetos casi en forma constante. Nuestro modelo de dominio va a estar estructurado en una red de objetos, siendo mas o menos grande dependiendo de la complejidad de la aplicación. En terminos simples, un ORM permite persistir este modelo basado en objetos en una base de datos relacional. El problema que resuelve un ORM es el "mapeo" de un objeto en una base de datos relacional (como las bases de datos SQL) el cual no puede ser realizado de forma directa. Esto sucede porque los objetos pueden estar formados tanto por valores escalares como por valores mas complejos (arrays, objetos), mientras que en una base de datos relacional un registro solo puede estar formado por valores escalares. 
+
+La solución a este problema lo aporta el ORM, el cual "mapea" un objeto en una base de datos relacional al momento de la escritura, y crea objetos a partir del resultado obtenido de la base de datos al momento de la lectura. Para entender esto, nada mejor que un ejemplo. Supongamos que tenemos una clase denominada Persona:
+
+.. code-block:: php
+
+	<?php
+		class Persona
+		{
+			protected $nombre;
+			protected $apellido;
+			protected $telefonos;
+			
+			public function __construct( $nombre, $apellido, array $telefonos )
+			{
+				$this->nombre 		= $nombre;
+				$this->apellido		= $apellido;
+				$this->telefonos	= $telefonos;
+			}
+		}
+
+Para persistir estos datos en una base de datos relacional no podríamos utilizar una sola tabla, ya que la propiedad "telefonos" es en este caso un array de instancias de la clase "Telefono". El esquema que utilizaríamos para guardar una Persona en una base de datos MySQL sería el siguiente:
+
+.. code-block:: php
+
+	CREATE TABLE persona ( 
+		id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+		nombre VARCHAR(255),
+		apellido VARCHAR(255)
+	);
+	CREATE TABLE persona_telefonos (
+		persona_id INT,
+		tipo_telefono VARCHAR(255),
+		telefono VARCHAR(255),
+		FOREIGN KEY (persona_id) REFERENCES persona(id)
+	);
+
+Como puedes ver, la propiedad "$telefonos" de la clase "Persona" requiere una tabla adicional en la base de datos para guardar los teléfonos de cada persona. Un ORM se encarga de este mapeo, el cual puede llegar a ser muy complicado según el modelo de dominio de la aplicación.
+
+Doctrine 2 es el ORM que utilizaremos. Nosotros explicaremos brevemente cada una de las funcionalidades que utilicemos al momento de necesitarlas. Sin embargo, es conveniente que leas su excelente `documentación`_ para conocerlo a fondo y poder exprimirlo al máximo.
+
+Otros links que pueden resultarte útiles a la hora de comprender el funcionamiento interno de un ORM:
+
+* `Patrones de persistencia de datos`_
+
+Hasta mañana!
+---------------------
+
+Con esto concluimos este capítulo de introducción a conceptos importantes sumamente necesarios para poder continuar este tutorial. Mañana empezaremos a analizar y diagramar el proyecto Shopeet, incluyendo un diagrama con las entidades básicas que necesitaremos, una lista de requerimientos y las historias de usuario.
+
+
+.. _documentación: http://www.doctrine-project.org/documentation
+.. _Patrones de persistencia de datos: http://msdn.microsoft.com/en-us/magazine/dd569757.aspx
