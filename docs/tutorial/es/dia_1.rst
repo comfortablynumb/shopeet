@@ -412,18 +412,12 @@ Mientras que al php.ini de Apache vamos a asignarle 64M:
 
 Listo! completamos la configuración de PHP. No fue dificil, no?
 
-Comienzo del proyecto
+Continuará..
 ---------------------
 
-Para comenzar nuestro proyecto, vamos a descargar el sandbox de Symfony 2, el cual ya nos provee de una estructura base de directorios y archivos para poder comenzar a desarrollar nuestra aplicación. Para ello, primero tenemos que ir a la carpeta publica de nuestro servidor web. En nuestro caso es `www`:
+Instalar y configurar correctamente nuestro entorno de trabajo es un paso muy importante. Necesitamos tener todo en orden para no llevarnos alguna sorpresa mas adelante mientras estamos desarrollando. Es por eso que este día lo dedicamos a instalar y configurar nuestro entorno, teniendo en cuenta todo lo necesario para que nuestro E-Commerce funcione correctamente.
 
-.. code-block:: php
-
-    cd /var/www
-
-El siguiente paso es clonar el repositorio del sandbox de symfony 2, lo cual vendría a ser como un `checkout` para los que utilizan SVN:
-
-Completar.
+Mañana continuaremos con una breve introducción a varios conceptos básicos que se requieren para poder utilizar cualquier framework MVC sin perderse en el camino.
 
 .. _la lista de timezones soportadas por PHP: http://php.net/manual/en/timezones.php
 .. _HTML 5: http://es.wikipedia.org/wiki/HTML_5
