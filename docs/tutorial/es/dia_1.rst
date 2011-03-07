@@ -223,9 +223,16 @@ y automáticamente lanzara la web de inicio mostrando que la instalación fue ex
 
 ahora solo debemos configurar la versión de PHP, para ello pulsamos el botón preferencias y alli seleccionamos la versión de PHP que nos interesa 5.3.2
 .. image:: images/dia_1/instalacion_mac_php_version_window.png
-  	:align: center                             
+  	:align: center                                                                                         
 
-pulsamos ok, reiniciamos los servidores y listo ya tenemos nuestro entorno para desarrollador con Symfony2.
+pulsamos ok, reiniciamos los servidores. Para finalizar en nuestra carpeta de usuario creamos un archivo .profile si es que este no existe y allí añadimos la siguiente información
+
+.. code-block:: php
+    ;export PATH=/Applications/MAMP/bin/php5.3/bin:/Applications/MAMP/Library/bin:$PATH
+		                                                        
+guardamos y cerramos el archivo, esto nos permite ejecutar PHP desde la consola sin problemas. 
+
+listo ya tenemos nuestro entorno para desarrollador con Symfony2.
 
 Windows
 #######
