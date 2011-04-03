@@ -8,35 +8,16 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('bundles/backend/js/vendor/extjs/bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/backend/js/vendor/extjs/ext-base-debug.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/backend/js/vendor/extjs/ext-all-debug.js') }}"></script>
     
-    <script type="text/javascript" src="{{ asset('bundles/backend/js/application/classes/Viewport.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/backend/js/application/classes/Application.js') }}"></script>
+    <script type="text/javascript">
+        Ext.BLANK_IMAGE_URL = '{{ asset('bundles/backend/js/vendor/extjs/resources/images/default/s.gif') }}';
+    </script>
 
-    <script type="text/javascript"> 
-        Ext.Loader.setConfig({enabled: true});
-        Ext.require([
-            'Ext.container.*',
-            'Ext.grid.*',
-            'Ext.data.*',
-            'Ext.util.*',
-            'Ext.Action',
-            'Ext.tab.*',
-            'Ext.button.*',
-            'Ext.form.*',
-            'Ext.layout.container.Card',
-            'Ext.layout.container.Border'
-        ]);
+    <script type="text/javascript" src="{{ asset('bundles/backend/js/application/Backend.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/backend/js/application/Viewport.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/backend/js/application/Application.js') }}"></script>
 
-        Ext.onReady(function() {
-            Ext.QuickTips.init();
-
-            new Backend.Application();
-        });
-        
-    </script> 
-{% endblock %}
-
-{% block body %}
-    <div id="loading-mask"></div>
+    <script type="text/javascript" src="{{ asset('bundles/backend/js/application/Main.js') }}"></script>
 {% endblock %}
