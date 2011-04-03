@@ -187,17 +187,17 @@ Lo que vamos a hacer ahora es instalar `MongoDB`_ y su soporte para PHP. Este pa
 
 .. code-block:: php
 
-	sudo apt-get install mongodb
+    sudo apt-get install mongodb
 
 .. code-block:: php
 
-	sudo pecl install mongo
+    sudo pecl install mongo
 
 Lo único que resta entonces es activar la extensión desde tu archivo php.ini. Agrega la siguiente linea:
 
 .. code-block:: php
 
-	extension=mongo.so
+    extension=mongo.so
 
 Si todo salió bien, al reiniciar Apache ya debería estar funcionando la extensión de MongoDB para PHP.
 
@@ -207,31 +207,31 @@ Para instalar esta extensión, ejecuta el siguiente comando:
 
 .. code-block:: php
 
-	sudo pecl install xdebug
+    sudo pecl install xdebug
 
 Una vez instalada la extension, deberás agregar la siguiente linea a tu fichero php.ini:
 
 .. code-block:: php
 
-	zend_extension=xdebug.so
+    zend_extension=xdebug.so
 
 En algunas ocasiones PHP lanza un error indicando que el archivo xdebug.so no fue encontrado. Si tienes este problema, ejecuta el siguiente comando:
 
 .. code-block:: php
 
-	find / -name xdebug.so
+    find / -name xdebug.so
 
 Si en los resultados aparece una linea como la siguiente:
 
 .. code-block:: php
 
-	/usr/lib/php5/20090626/xdebug.so
+    /usr/lib/php5/20090626/xdebug.so
 
 Entonces en tu archivo php.ini deberás agregar:
 
 .. code-block:: php
 
-	zend_extension=/usr/lib/php5/20090626/xdebug.so
+    zend_extension=/usr/lib/php5/20090626/xdebug.so
 
 Al reiniciar Apache, ya deberías tener la extensión activa. Recuerda que puedes verificar las extensiones instaladas simplemente viendo el resultado de la funcion phpinfo().
 
@@ -249,47 +249,47 @@ Macintosh
 Si eres usuario de Mac probablemente tengas ya un entorno de desarrollo con Apache 2.1 y PHP 5.2 pero como es conocido symfony2 esta hecho para PHP 5.3 y para no tener complicaciones vamos a instalar `MAMP`_
 
 .. image:: images/dia_1/instalacion_mac_mamp_info_url.png
-	:align: center
+    :align: center
 
 .. image:: images/dia_1/instalacion_mac_mamp_info_web.png
-	:align: center
-		
+    :align: center
+        
 Allí pulsamos el botón "Download Now" una ves terminada las descarga el sistema montará automáticamente la imagen DMG descargada y copiamos la carpeta MAMP a nuestra carpeta de aplicaciones:
 
 .. image:: images/dia_1/instalacion_mac_app_folder.png
-	:align: center
-		
+    :align: center
+        
 Abrimos la carpeta MAMP y ejecutamos la aplicación MAMP:
 
 .. image:: images/dia_1/instalacion_mac_app_mamp.png
-	:align: center                      
-		 
+    :align: center                      
+         
 Es posible que te solicite tu contraseña:
 
 .. image:: images/dia_1/instalacion_mac_auth_dialog.png
-  	:align: center
+    :align: center
 
 Una vez la aplicación abierta:
 
 .. image:: images/dia_1/instalacion_mac_mamp_preview.png
-  	:align: center
+    :align: center
 
 Y automáticamente lanzara la web de inicio mostrando que la instalación fue exitosa:
 
 .. image:: images/dia_1/instalacion_mac_local_mamp_web.png
-  	:align: center
+    :align: center
 
 Ahora solo debemos configurar la versión de PHP, para ello pulsamos el botón preferencias y alli seleccionamos la versión de PHP que nos interesa 5.3.2:
 
 .. image:: images/dia_1/instalacion_mac_php_version_window.png
-  	:align: center                                                                                         
+    :align: center                                                                                         
 
 Pulsamos ok, reiniciamos los servidores. Para finalizar en nuestra carpeta de usuario creamos un archivo .profile si es que este no existe y allí añadimos la siguiente información
 
 .. code-block:: php
 
     ;export PATH=/Applications/MAMP/bin/php5.3/bin:/Applications/MAMP/Library/bin:$PATH
-		                                                        
+                                                                
 Guardamos y cerramos el archivo, esto nos permite ejecutar PHP desde la consola sin problemas. 
 
 Listo, ya tenemos nuestro entorno para desarrollador con Symfony2.

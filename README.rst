@@ -9,21 +9,48 @@ Para generar una version HTML de la documentación, deberás tener instaladas la
 * `Sphinx`_
 * `Pygments`_
 
-.. _Docutils: http://docutils.sourceforge.net/
-.. _Sphinx: http://sphinx.pocoo.org/index.html
-.. _Pygments: http://pygments.org/docs/installation/
-
-Una vez que tengas todo instalado, ve al directorio docs/tutorial/es y ejecuta el comando:
+Una vez que tengas todo instalado, ve al directorio *docs/tutorial/es* y ejecuta el comando:
 
     make html
 
 La documentación estara disponible en el directorio _build.
 
 
-Recursos utilizados:
+Instalación:
+------------
+
+Primero debes clonar el proyecto:
+
+.. code-block:: php
+    git clone git@github.com:comfortablynumb/shopeet.git
+
+Luego deberás ingresar al directorio que contiene el proyecto y ejecutar el script de instalación de vendors:
+
+.. code-block:: php
+    cd shopeet
+    
+    ./bin/vendors.sh
+
+Una vez instalados los vendors, lo único que te faltará es `descargar el ExtJS 3.3.1`_ y colocar los siguientes archivos en la carpeta *src/ShopeetGroup/BackendBundle/Resources/public/js/vendor/extjs*:
+
+* ext-base-debug.js
+* ext-base.js
+* ext-all-debug.js
+* ext-all.js
+* carpeta resources
+
+Este paso será agregado próximamente al script vendors.sh y se realizará automáticamente al momento de su ejecución en el paso anterior.
+
+
+Librerías y Recursos utilizados:
+--------------------
 
 * `ExtJS 3.3.1`_
 * Iconos de `FamFamFam`_
 
+.. _Docutils: http://docutils.sourceforge.net/
+.. _Sphinx: http://sphinx.pocoo.org/index.html
+.. _Pygments: http://pygments.org/docs/installation/
+.. _descargar el ExtJS 3.3.1: http://www.sencha.com/products/extjs/download/ext-js-3.3.1/0
 .. _FamFamFam: http://www.famfamfam.com/
 .. _ExtJS 3.3.1: http://www.sencha.com/products/extjs/
