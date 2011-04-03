@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ asset('bundles/backend/js/vendor/extjs/resources/css/ext-all.css') }}" />
+    
+    <link type="text/css" rel="stylesheet" href="{{ asset('bundles/backend/css/style.css') }}" />
+    <link type="text/css" rel="stylesheet" href="{{ asset('bundles/backend/css/icons.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/backend/js/vendor/extjs/bootstrap.js') }}"></script>
+    
+    <script type="text/javascript" src="{{ asset('bundles/backend/js/application/classes/Viewport.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/backend/js/application/classes/Application.js') }}"></script>
+
+    <script type="text/javascript"> 
+        Ext.Loader.setConfig({enabled: true});
+        Ext.require([
+            'Ext.container.*',
+            'Ext.grid.*',
+            'Ext.data.*',
+            'Ext.util.*',
+            'Ext.Action',
+            'Ext.tab.*',
+            'Ext.button.*',
+            'Ext.form.*',
+            'Ext.layout.container.Card',
+            'Ext.layout.container.Border'
+        ]);
+
+        Ext.onReady(function() {
+            Ext.QuickTips.init();
+
+            new Backend.Application();
+        });
+        
+    </script> 
+{% endblock %}
+
+{% block body %}
+    <div id="loading-mask"></div>
+{% endblock %}

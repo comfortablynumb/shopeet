@@ -47,7 +47,7 @@ doctrine:
         entity_managers:
             default:
                 mappings:
-                    AcmeDemo: ~
+                    Backend: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -56,6 +56,5 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
 
-jms_security_extra:
-    secure_controllers:  true
-    secure_all_services: false
+parameters:
+    assetic.filter.closure.jar:   ~

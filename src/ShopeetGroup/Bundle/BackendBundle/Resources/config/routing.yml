@@ -1,0 +1,3 @@
+backend_index:
+    pattern: /backend
+    defaults: { _controller: Backend:Backend:index, _method: GET }

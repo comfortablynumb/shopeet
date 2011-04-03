@@ -18,3 +18,10 @@ Una vez que tengas todo instalado, ve al directorio docs/tutorial/es y ejecuta e
     make html
 
 La documentación estara disponible en el directorio _build.
+
+
+Recursos utilizados:
+
+* Iconos de `FamFamFam`_
+
+.. _FamFamFam: http://www.famfamfam.com/
