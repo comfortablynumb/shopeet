@@ -22,6 +22,8 @@ La documentación estara disponible en el directorio _build.
 
 Recursos utilizados:
 
+* `ExtJS Beta 4`_
 * Iconos de `FamFamFam`_
 
 .. _FamFamFam: http://www.famfamfam.com/
+.. _ExtJS Beta 4: http://www.sencha.com/products/extjs4-beta/
